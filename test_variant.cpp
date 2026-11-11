@@ -124,3 +124,23 @@ TEST(MatrixSpiral, ZeroRows) {
     EXPECT_EQ(out_size, 0u);
     matrix_delete(m, 2);
 }
+
+TEST(MatrixWrite, WritesValue) {
+    int** m = matrix_create(2, 3);
+    ASSERT_NE(m, nullptr);
+    EXPECT_TRUE(matrix_write(m, 2, 3, 1, 2, 42));
+    EXPECT_EQ(m[1][2], 42);
+    matrix_delete(m, 2);
+}
+
+TEST(MatrixWrite, OutOfRangeRejected) {
+    int** m = matrix_create(2, 3);
+    ASSERT_NE(m, nullptr);
+    EXPECT_FALSE(matrix_write(m, 2, 3, 2, 0, 1));
+    EXPECT_FALSE(matrix_write(m, 2, 3, 0, 3, 1));
+    matrix_delete(m, 2);
+}
+
+TEST(MatrixWrite, NullptrIsSafe) {
+    EXPECT_FALSE(matrix_write(nullptr, 2, 3, 0, 0, 1));
+}

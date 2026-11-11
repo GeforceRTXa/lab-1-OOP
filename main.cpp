@@ -27,6 +27,7 @@ int main() {
         std::cout << "2. Fill with value" << std::endl;
         std::cout << "3. Print" << std::endl;
         std::cout << "4. Spiral read" << std::endl;
+        std::cout << "5. write value" << std::endl;
         std::cout << "0. Exit" << std::endl;
 
         int choice = 0;
@@ -94,6 +95,34 @@ int main() {
                 std::cout << std::endl;
                 delete[] result;
                 result = nullptr;
+                break;
+            }
+            case 5: {
+                if (m == nullptr) {
+                    std::cout << "Create matrix first!" << std::endl;
+                    break;
+                }
+                int r = 0;
+                int c = 0;
+                int value = 0;
+                std::cout << "Row (from 0): ";
+                if (!read_int(r) || r < 0) {
+                    std::cout << "Invalid arguments!" << std::endl;
+                    break;
+                }
+                std::cout << "Col (from 0): ";
+                if (!read_int(c) || c < 0) {
+                    std::cout << "Invalid arguments!" << std::endl;
+                    break;
+                }
+                std::cout << "Value: ";
+                if (!read_int(value)) {
+                    std::cout << "Invalid input!" << std::endl;
+                    break;
+                }
+                if (!matrix_write(m, rows, cols, static_cast<size_t>(r), static_cast<size_t>(c), value)) {
+                    std::cout << "Index out of range!" << std::endl;
+                }
                 break;
             }
             case 0: {

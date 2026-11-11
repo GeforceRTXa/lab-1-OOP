@@ -93,3 +93,11 @@ int *matrix_spiral_read(const int *const *m, size_t rows, size_t cols, size_t &o
     }
     return array;
 }
+
+bool matrix_write(int **m, std::size_t rows, std::size_t cols, std::size_t row, std::size_t col, int value) {
+    if (col >= cols || row >= rows || m == nullptr) {
+        return false;
+    }
+    m[row][col] = value;
+    return true;
+}

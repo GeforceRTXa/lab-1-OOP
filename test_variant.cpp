@@ -112,7 +112,7 @@ TEST(MatrixSpiral, NullptrMatrix) {
     size_t out_size = 999;
     int* result = matrix_spiral_read(nullptr, 3, 3, out_size);
     EXPECT_EQ(result, nullptr);
-    EXPECT_EQ(out_size, 0u);
+    EXPECT_EQ(out_size, 0);
 }
 
 TEST(MatrixSpiral, ZeroRows) {
@@ -121,7 +121,7 @@ TEST(MatrixSpiral, ZeroRows) {
     size_t out_size = 999;
     int* result = matrix_spiral_read(m, 0, 2, out_size);
     EXPECT_EQ(result, nullptr);
-    EXPECT_EQ(out_size, 0u);
+    EXPECT_EQ(out_size, 0);
     matrix_delete(m, 2);
 }
 
